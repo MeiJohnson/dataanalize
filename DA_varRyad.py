@@ -7,7 +7,7 @@ lst=[]
 
 data = open('a.in')
 for i in range(n):
-    lst.append(int(data.readline()))
+    lst.append(float(data.readline()))
 lst.sort()
 print('Вариационный ряд:')
 for i in lst:
@@ -19,18 +19,18 @@ print('Количество интервалов по формуле Стерд�
 k_round = round(k)+1
 print('Количество интервалов: ', k_round)
 delta = (lst[len(lst)-1]-lst[0])/k_round
-print('Длиина интервалов:', delta)
+print('Длиина интервалов:', round(delta,3))
 print()
 
 ends = []
-ends.append((lst[0]+delta))
+ends.append(round((lst[0]+delta), 3))
 begins = []
-begins.append(lst[0])
-begins.append(ends[0])
+begins.append(round(lst[0], 3))
+begins.append(round(ends[0], 3))
 for i in range(1, k_round):
-    ends.append((ends[i-1]+delta))
+    ends.append(round(ends[i-1]+delta, 3))
     if i != k_round-1:
-        begins.append(ends[i])
+        begins.append(round(ends[i], 3))
 
 mi_list = []
 middle = []
@@ -55,7 +55,7 @@ for i in range(1, k_round):
 mxi_list[len(mxi_list)-1] += 1
 
 for i in range(k_round):
-    wxi_list.append(mxi_list[i]/n)
+    wxi_list.append(round(mxi_list[i]/n,3))
 
 
 inter_table = PrettyTable()
